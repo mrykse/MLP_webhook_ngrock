@@ -7,7 +7,6 @@ app = Flask(__name__)
 # In-memory database
 items = []
 
-
 @app.route('/testing')
 def testing():
     script_path = 'script.sh'
