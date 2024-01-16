@@ -7,6 +7,7 @@ app = Flask(__name__)
 # In-memory database
 items = []
 
+
 @app.route('/')
 def index():
     return render_template('index.html', items=items)
@@ -24,6 +25,13 @@ def add_item():
 def delete_item(index):
     if index < len(items):
         items.pop(index)
+    return redirect(url_for('index'))
+
+
+@app.route('/update/<int:index>', methods=['POST'])
+def update_item(index):
+    if index < len(items):
+        items[index] = request.form.get('new_item')
     return redirect(url_for('index'))
 
 
