@@ -7,17 +7,6 @@ app = Flask(__name__)
 # In-memory database
 items = []
 
-@app.route('/testing')
-def testing():
-    script_path = 'script.sh'
-    result = subprocess.run(['bash', script_path], capture_output=True, text=True)
-
-    if result.returncode == 0:
-        return f"Script executed successfully. Output: {result.stdout}"
-    else:
-        return f"Error executing script. Error: {result.stderr}"
-
-
 @app.route('/')
 def index():
     return render_template('index.html', items=items)
