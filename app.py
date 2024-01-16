@@ -27,12 +27,5 @@ def delete_item(index):
     return redirect(url_for('index'))
 
 
-@app.route('/update/<int:index>', methods=['POST'])
-def update_item(index):
-    if index < len(items):
-        items[index] = request.form.get('new_item')
-    return redirect(url_for('index'))
-
-
 if __name__ == '__main__':
     app.run(debug=True)
